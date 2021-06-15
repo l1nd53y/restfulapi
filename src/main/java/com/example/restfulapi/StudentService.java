@@ -41,6 +41,9 @@ public class StudentService {
     @Transactional
     public void updateStudent(Long studentId, String name, String email, LocalDate dob) {
         Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException("Student not found"));
-
+        if(!student.getName().equals(name)){ student.setName(name);}
+        if(!student.getEmail().equals(email)){ student.setEmail(email);}
+        if(!student.getDob().equals(dob)){ student.setDob(dob);}
+        student.setName(name);
     }
 }
